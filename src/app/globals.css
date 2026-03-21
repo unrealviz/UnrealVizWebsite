@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('/fonts/Cinzel-Regular.ttf') format('ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Audiowide';
+  src: url('/fonts/Audiowide-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/Nunito-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+:root {
+  --foreground: #ffffff;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: var(--foreground);
+  font-family: sans-serif, Helvetica;
+  box-sizing: border-box;
+}
+
+body::selection{
+  background: #FF0099;
+  color: black;
+  text-shadow: none;
+}
+
+/* Landing page */
+
+.logo {
+  position: relative;
+  transform: translate(5px, 2px);
+  font-family: "Cinzel";
+}
+
+#landing_page{
+  font-family: "Cinzel";
+}
+
+#landing_page p {
+  font-family: "Nunito";
+}
+
+/* ballbuds */
+#ballbuds_page {
+  font-family: "Audiowide";
+}
+
+#ballbuds_page p {
+  font-family: "Nunito";
+}
+
+.footerh1 {
+  font-family: "Cinzel";
+}
+
+.bb_section_1, .bb_section_2, .bb_section_3 {
+  /* Hide All Scrollbars */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#ballvuds_page .logo {
+  font-family: "Cinzel";
+}
+
+/* Lenis */
+html.lenis, html.lenis body {
+ height: auto;
+}
+.lenis.lenis-smooth {
+ scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+ overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+ overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+ pointer-events: none;
+}

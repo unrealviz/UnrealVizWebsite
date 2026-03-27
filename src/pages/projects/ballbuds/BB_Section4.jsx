@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLenis } from "lenis/react";
 import ThreeScene from "@/components/projects/ballbuds/ThreeScene";
 // import GUI from "lil-gui";
@@ -66,7 +66,7 @@ const METAL_Glove_KEYFRAMES = (isDesktop) => {
         position: {
           x: 1,
           y: 0,
-          z: 0.5,
+          z: 0.2,
         },
         rotation: { x: 0.1, y: Math.PI * 2, z: -0.15 },
       },
@@ -75,45 +75,27 @@ const METAL_Glove_KEYFRAMES = (isDesktop) => {
         position: {
           x: 1.6,
           y: 0,
-          z: 0.8,
+          z: 1.5,
         },
-        rotation: { x: -0.12, y: Math.PI * 2.8, z: 0.2 },
+        rotation: { x: -0.12, y: Math.PI * 2.9, z: 0.2 },
       },
       {
         at: 0.5,
         position: {
-          x: 1.4,
-          y: 0,
-          z: 0.7,
+          x: 0,
+          y: 1,
+          z: 3,
         },
-        rotation: { x: -0.1, y: Math.PI * 4.4, z: 0.18 },
-      },
-      {
-        at: 0.75,
-        position: {
-          x: 1,
-          y: 0,
-          z: 0.4,
-        },
-        rotation: { x: 0.12, y: Math.PI * 5.2, z: -0.2 },
-      },
-      {
-        at: 0.9,
-        position: {
-          x: 1.4,
-          y: 0,
-          z: 1.5,
-        },
-        rotation: { x: 0, y: Math.PI * 6, z: 0 },
+        rotation: { x: -0.12, y: Math.PI * 4, z: 1.5 },
       },
       {
         at: 1,
         position: {
-          x: -5,
-          y: 0,
-          z: 0.5,
+          x: 0.15,
+          y: 1.25,
+          z: 4.52,
         },
-        rotation: { x: 0, y: Math.PI * 10, z: 0 },
+        rotation: { x: 0, y: Math.PI * 5, z: 3.6 },
       },
     ];
   } else {
@@ -186,7 +168,7 @@ const EDM_Glove_KEYFRAMES = (isDesktop) => {
     return [
       {
         at: 0,
-        position: { x: 5, y: 0.5, z: 0 - 0.25 },
+        position: { x: 4.6, y: 0.5, z: 0 - 0.25 },
         rotation: { x: 0, y: 0, z: 0 },
       },
       {
@@ -340,17 +322,17 @@ const BB_Section4 = ({ isDesktop }) => {
 
           textShadow: "5px 4px 8px rgb(135 0 0 / 80%)",
         }}
-        className="relative h-[1000vh] w-full"
+        className="relative h-[500vh] w-full"
       >
         {/* fade out at the top */}
         <div className="absolute top-0 left-0 w-full h-50 bg-linear-to-t from-transparent to-[#ffffff] z-20 pointer-events-none" />
         {/* fade out at the bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-75 bg-linear-to-b from-transparent to-[#07000a] z-20 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-screen bg-linear-to-b from-transparent to-[#0a0008] z-20 pointer-events-none" />
 
         {/* Contents */}
         <div ref={subSection1Ref} className="absolute top-0 w-full h-full z-10">
           {/* Title */}
-          <div className="relative h-[500vh] w-[60vw] inset-0 m-auto">
+          <div className="relative h-[250vh] w-[60vw] inset-0 m-auto">
             <div className="sticky top-0 h-screen w-full">
               <div className="relative flex flex-col justify-center items-start h-screen w-full text-white font-bold">
                 <div className="border-l-4 border-red-500 pl-10">
@@ -363,7 +345,7 @@ const BB_Section4 = ({ isDesktop }) => {
             </div>
           </div>
           {/* Description */}
-          <div className="relative h-[500vh] w-[60vw] inset-0 m-auto">
+          <div className="relative h-[250vh] w-[60vw] inset-0 m-auto">
             <div className="sticky top-0 h-screen w-full">
               <div className="relative flex flex-col justify-center items-start h-screen w-full text-white font-bold">
                 <div className="flex flex-col gap-2 md:gap-4 text-[clamp(1rem,1.25vw,3rem)] w-[70vw] md:w-[30vw]  border-l-4 border-red-500 pl-10">
@@ -381,7 +363,7 @@ const BB_Section4 = ({ isDesktop }) => {
           </div>
         </div>
         {/* METAL Gloves */}
-        <div className="relative h-[1000vh] w-full">
+        <div className="relative h-[500vh] w-full">
           <div className="sticky top-0 left-0 h-screen w-full">
             <SectionCanvas
               sceneRef={sceneRef1}
@@ -404,7 +386,7 @@ const BB_Section4 = ({ isDesktop }) => {
 
           textShadow: "5px 4px 12px rgb(150 0 100 / 80%)",
         }}
-        className="relative h-[1000vh] w-full"
+        className="relative h-[500vh] w-full"
       >
         {/* fade out at the top */}
         <div className="absolute top-0 left-0 w-full h-50 bg-linear-to-t from-transparent to-[#07000a] z-20 pointer-events-none" />
@@ -414,7 +396,7 @@ const BB_Section4 = ({ isDesktop }) => {
         {/* Content */}
         <div ref={subSection2Ref} className="absolute top-0 w-full h-full z-10">
           {/* Title */}
-          <div className="relative h-[500vh] w-[60vw] inset-0 m-auto">
+          <div className="relative h-[250vh] w-[60vw] inset-0 m-auto">
             <div className="sticky top-0 h-screen w-full">
               <div className="relative flex flex-col justify-center items-start h-screen w-full text-white font-bold">
                 <div className="border-l-4 border-pink-500 pl-10">
@@ -427,7 +409,7 @@ const BB_Section4 = ({ isDesktop }) => {
             </div>
           </div>
           {/* Description */}
-          <div className="relative h-[500vh] w-[60vw] inset-0 m-auto">
+          <div className="relative h-[250vh] w-[60vw] inset-0 m-auto">
             <div className="sticky top-0 h-screen w-full">
               <div className="relative flex flex-col justify-center items-start h-screen w-full text-white font-bold">
                 <div className="flex flex-col gap-2 md:gap-4 text-[clamp(1rem,1.25vw,3rem)] w-[70vw] md:w-[30vw] border-l-4 border-pink-500 pl-10">
@@ -445,7 +427,7 @@ const BB_Section4 = ({ isDesktop }) => {
           </div>
         </div>
         {/* EDM Gloves */}
-        <div className="relative h-[1000vh] w-full">
+        <div className="relative h-[500vh] w-full">
           <div className="sticky top-0 left-0 h-screen w-full">
             <SectionCanvas
               sceneRef={sceneRef2}

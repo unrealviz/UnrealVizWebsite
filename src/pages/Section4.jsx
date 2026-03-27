@@ -4,8 +4,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
@@ -19,7 +17,7 @@ const Section4 = () => {
       }}
     >
       {/* Header */}
-      <motion.div className="relative w-full pb-10 flex flex-col justify-center items-center overflow-hidden">
+      <motion.div className="relative w-full pb-10 flex flex-col justify-center items-center">
         <h3 className="text-[clamp(2.5rem,7vw,8rem)] text-gray-200/90 font-semibold tracking-widest mb-2">
           TESTIMONIALS
         </h3>
@@ -29,56 +27,82 @@ const Section4 = () => {
       </motion.div>
       {/* Carousel */}
       <motion.div className="relative flex flex-col justify-center items-center mt-10">
-        <div className="w-[90vw] lg:w-[80vw] 2xl:w-[70vw] max-w-450">
+        <div className="w-[90vw] lg:w-[80vw] 2xl:w-[70vw]">
           <Carousel className="overflow-hidden">
-            <CarouselContent className="-ml-1 flex gap-5 justify-center">
+            <CarouselContent className="-ml-1 flex gap-5">
               {[
                 {
                   stars: 5,
                   comment:
-                    "Working with them was an absolute delight. They understood our vision perfectly and brought it to life with precision and style. Their commitment to excellence is evident in every detail.",
-                  name: "Alice Johnson",
-                  company: "Tech Solutions Inc.",
-                  img: "/assets/default-avatar.avif",
-                },
-                {
-                  stars: 4.5,
-                  comment:
-                    "Exceptional service from start to finish! They combine creativity, skill, and excellent communication to deliver results that truly stand out. I highly recommend them to anyone looking for quality and reliability.",
-                  name: "Bob Smith",
-                  company: "Creative Co.",
-                  img: "/assets/default-avatar.avif",
+                    "Unrealviz is an incredible resource for anybody setting up Github with their Unreal project for the first time. He has trained me and my team in best practices as well, helping us avoid many of the common pitfalls we wouldn't have known of along the way, setting us up for success. Highly recommend!",
+                  name: "yosoyjonlau",
+                  from: "United States",
+                  img: "/reviews/profile-image/yosoyjonlau.png",
                 },
                 {
                   stars: 5,
                   comment:
-                    "The level of professionalism and expertise this team brings is unmatched. They listened carefully, executed flawlessly, and made the entire process enjoyable. I'm thoroughly impressed and will definitely work with them again.",
-                  name: "Carla Reyes",
-                  company: "InnovateX",
-                  img: "/assets/default-avatar.avif",
-                },
-                {
-                  stars: 4,
-                  comment:
-                    "From the first consultation to the final delivery, the experience was seamless. Their creativity, attention to detail, and dedication really set them apart. I highly recommend them to anyone seeking top-notch service.",
-                  name: "Daniel Lee",
-                  company: "BuildIt",
-                  img: "/assets/default-avatar.avif",
+                    "Working with the Unreal Viz team has been an outstanding experience. They bring both deep technical expertise and a strong sense of personality to the project, making collaboration seamless and enjoyable. More importantly, they've consistently gone above and beyond expectations—demonstrating not only the skills we need in a development partner, but also the drive and commitment to push this project toward success.",
+                  name: 'Jon "The Chairman" Lau',
+                  from: "BallBuds",
+                  img: "/reviews/profile-image/Jon_'The_Chairman'_Lau.avif",
                 },
                 {
                   stars: 5,
                   comment:
-                    "I couldn't be happier with the results! The team was professional, responsive, and incredibly skilled. They took the time to understand exactly what we needed and delivered a solution that went beyond our expectations. Truly outstanding work.",
-                  name: "Eva Martinez",
-                  company: "DesignHub",
-                  img: "/assets/default-avatar.avif",
+                    "Unrealviz was polite enough to give me a discount on a very complex project as well as being collaborative. He did what I asked for and beyond. He was always ready to help! A Professional Freelancer indeed!",
+                  name: "khallfasm98",
+                  from: "United Arab Emirates",
+                  img: "/reviews/profile-image/khallfasm98.png",
+                },
+                {
+                  stars: 5,
+                  comment:
+                    "The seller helped me to work with Unreal in a more meaningful manner and was working hard to show me progress before completing the order. He had excellent communication all throughout the project. He cares about his work on here.",
+                  name: "cataclysmicjedi",
+                  from: "United States",
+                  img: "/reviews/profile-image/cataclysmicjedi.png",
+                },
+                {
+                  stars: 5,
+                  comment:
+                    "best unreal engine teacher on fiverr. if you need to learn: 1. how to make levels in unreal engine 2. how to make cut scenes in unreal engine this artist is an amazing help",
+                  name: "tru_comics",
+                  from: "United States",
+                  img: "/reviews/profile-image/tru_comics.jpg",
+                },
+                {
+                  stars: 5,
+                  comment:
+                    "I had a very good experience working with Unrealviz. He responded quickly, and showed careful attention to my requests. He was flexible and cooperative. I would definitely recommend him for anyone wanting work done on Unreal Engine.",
+                  name: "gannon911",
+                  from: "United States",
+                  img: "/reviews/profile-image/default-avatar.avif",
+                },
+                {
+                  stars: 5,
+                  comment:
+                    "Unrealviz truly sets the bar HIGH in game development! His work not only met but exceeded expectations with expert coding and impeccable attention to detail. Partnering with him was a breeze thanks to his perfect communication, fluency in language, and deep understanding of my needs—I've learned so much! 🙌 Looking forward to collaborating 100% again.",
+                  name: "bloodytrack",
+                  from: "Czech Republic",
+                  img: "/reviews/profile-image/default-avatar.avif",
+                },
+                {
+                  stars: 5,
+                  comment:
+                    "Really great experience! Will work with him again for sure!",
+                  name: "vgrosso",
+                  from: "United States",
+                  img: "/reviews/profile-image/default-avatar.avif",
                 },
               ].map((testimonial, index) => (
                 <CarouselItem
                   key={index}
-                  className="basis-full md:basis-1/2 lg:basis-1/3 2xl:basis-1/4 flex justify-center"
+                  className="basis-full md:basis-1/2 lg:basis-1/3 2xl:basis-1/4 flex overflow-visible"
                 >
-                  <div className="bg-white shadow-xl rounded-lg p-6 2xl:p-8 flex flex-col justify-between items-center text-center w-full max-w-xs 2xl:max-w-sm">
+                  <div
+                    className={`${testimonial.name == 'Jon "The Chairman" Lau' && "animated-Card bg-transparent! "} overflow-visible relative bg-white shadow-xl rounded-lg p-6 2xl:p-8 flex flex-col justify-between items-center text-center w-full max-w-xs 2xl:max-w-sm`}
+                  >
                     {/* Profile Image */}
                     <div>
                       <Image
@@ -86,7 +110,7 @@ const Section4 = () => {
                         alt={testimonial.name}
                         width={80}
                         height={80}
-                        className="w-20 h-20 2xl:w-24 2xl:h-24 rounded-full object-cover mb-4"
+                        className="w-20 h-20 2xl:w-24 2xl:h-24 rounded-full object-cover mb-2"
                       />
 
                       {/* Star Ratings */}
@@ -104,13 +128,13 @@ const Section4 = () => {
                       {testimonial.comment}
                     </p>
 
-                    {/* Name & Company */}
+                    {/* Name & from */}
                     <div>
                       <p className="text-gray-600 text-[clamp(0.875rem,0.8vw,1.5rem)]">
                         {testimonial.name}
                       </p>
                       <p className="text-gray-400 text-[clamp(0.75rem,0.6vw,1rem)]">
-                        {testimonial.company}
+                        {testimonial.from}
                       </p>
                     </div>
                   </div>

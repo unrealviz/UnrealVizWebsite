@@ -1,7 +1,11 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
 import React, { useRef } from "react";
-import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 import { SpawnBubbles } from "@/components/Bubble";
 
 export default function Section2({ isDesktop }) {
@@ -41,7 +45,15 @@ export default function Section2({ isDesktop }) {
       />
       <AnimatedTechMarquee
         isDesktop={isDesktop}
-        items={["Unreal Engine 5", "V-Ray", "Chaos Corona", "Lumion"]}
+        items={[
+          "Unreal Engine 5 (Blueprint & C++)",
+          "C++ (Core systems & performance-critical logic)",
+          "Blueprint Visual Scripting (Rapid development & iteration)",
+          "Multiplayer Networking (UE Framework)",
+          "Behavior Trees & AI Systems (UE AI Tools)",
+          "Git / Version Control Systems",
+          "Perforce (for large-scale production pipelines)",
+        ]}
         accentColor="pink"
         side="left"
       />
@@ -64,7 +76,14 @@ export default function Section2({ isDesktop }) {
       />
       <AnimatedTechMarquee
         isDesktop={isDesktop}
-        items={["Blender", "Maya", "ZBrush", "Substance Painter"]}
+        items={[
+          "Blender (Modeling & asset creation)",
+          "ZBrush (High-detail sculpting)",
+          "Substance 3D Painter (Texturing & PBR workflows)",
+          "Substance 3D Designer (Procedural materials)",
+          "Marmoset Toolbag (Baking & rendering)",
+          "Unreal Engine 5 (Asset integration & look development)",
+        ]}
         accentColor="purple"
         side="right"
       />
@@ -122,7 +141,14 @@ export default function Section2({ isDesktop }) {
       />
       <AnimatedTechMarquee
         isDesktop={isDesktop}
-        items={["Unreal Engine 5", "V-Ray", "Chaos Corona", "Lumion"]}
+        items={[
+          "Unreal Engine 5",
+          "Blueprint Visual Scripting",
+          "C++ (for scalable systems when needed)",
+          "Niagara (VFX prototyping)",
+          "Control Rig / Animation Tools",
+          "Version Control (Git / Perforce)",
+        ]}
         accentColor="pink"
         side="right"
       />
@@ -215,8 +241,6 @@ const SectionTitle = ({ isDesktop }) => {
   );
 };
 
-// --- Shared sub-components ---
-
 const ServiceCard = ({
   title,
   titleAccent,
@@ -233,10 +257,10 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`relative w-[96vw] mt-5 rounded-2xl flex ${side === "right" ? "justify-end" : "justify-start"} items-center overflow-hidden`}
+      className={`relative w-[96vw] mt-5 flex ${side === "right" ? "justify-end" : "justify-start"} items-center overflow-hidden`}
     >
-      <div className="relative md:w-[48vw] w-full min-h-[22vh] h-full rounded-2xl flex flex-col items-start overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl p-8">
-        <h1 className="font-bold text-[clamp(2rem,3vw,5rem)] text-left text-white/90 mb-4 leading-tight">
+      <div className="relative md:w-[48vw] w-full min-h-[22vh] h-full rounded-md flex flex-col items-start overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl p-8">
+        <h1 className="font-bold text-[clamp(1.75rem,2vw,3rem)] text-left text-white/90 leading-tight">
           {titleAccent ? (
             <>
               {title}{" "}
@@ -252,7 +276,7 @@ const ServiceCard = ({
             title
           )}
         </h1>
-        <p className="mb-8 ps-1 text-gray-300 text-[clamp(1rem,1.1vw,1.75rem)]">
+        <p className="mb-8 ps-1 text-gray-300 text-[clamp(0.7rem,0.8vw,1.25rem)]">
           {description}
         </p>
         <h2 className="font-bold text-[clamp(1rem,1.5vw,3rem)] text-gray-100/90 mb-4">
@@ -282,60 +306,39 @@ const TechMarquee = ({ items, accentColor, side = "left" }) => {
     accentColor === "pink"
       ? "px-4 py-2 rounded-lg font-mono tracking-wider text-pink-200 bg-pink-900/40 border border-pink-500/30 whitespace-nowrap shadow-inner"
       : "px-4 py-2 rounded-lg font-mono tracking-wider text-purple-200 bg-purple-900/40 border border-purple-500/30 whitespace-nowrap shadow-inner";
-
   return (
     <div
-      className={`relative w-[96vw] mt-5 rounded-2xl flex ${side === "right" ? "justify-end" : "justify-start"} items-center overflow-hidden`}
+      className={`relative w-[96vw] h-full mt-5 flex ${
+        side === "right" ? "justify-end" : "justify-start"
+      } items-center`}
     >
-      <div className="relative md:w-[48vw] w-full h-full rounded-2xl flex flex-row items-center overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl pl-8 pr-8 gap-8">
-        <div className="absolute inset-y-0 left-0 w-10 bg-linear-to-r from-black/10 to-transparent z-20" />
-        <h2 className="z-10 font-bold text-[clamp(1rem,1.5vw,3.5rem)] text-white/90 whitespace-nowrap">
+      <div className="relative overflow-hidden md:w-[48vw] w-full h-[50%] rounded-md flex flex-row items-center bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl pl-4 pr-4 gap-8">
+        <div className="absolute inset-y-0 left-0 w-10 bg-linear-to-r from-black/10 to-transparent z-20 pointer-events-none" />
+
+        <h2 className="hidden md:block z-10 font-bold text-[clamp(0.875rem,1.2vw,2.5rem)] text-white/90 whitespace-nowrap">
           Technology
         </h2>
 
-        <div className="overflow-hidden w-full relative">
-          <motion.ul
-            className="p-8 flex flex-row flex-nowrap gap-4 text-[clamp(1rem,1vw,2rem)]"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
-          >
-            {[...items, ...items].map((item, i) => (
-              <li key={i} className={pillClass}>
-                <p>{item}</p>
-              </li>
-            ))}
-          </motion.ul>
+        <div className="w-full relative cursor-grab active:cursor-grabbing py-4">
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-4 flex">
+              {items.map((item, index) => (
+                <CarouselItem key={index} className="pl-4 basis-auto">
+                  <div className={`${pillClass} h-full`}>
+                    <p>{item}</p>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
+
+        {/* Right Shadow Overlay */}
+        <div className="absolute inset-y-0 right-0 w-10 bg-linear-to-l from-black/10 to-transparent z-20 pointer-events-none" />
       </div>
     </div>
   );
 };
-
-const SMTechMarquee = ({ items, accentColor }) => {
-  const pillClass =
-    accentColor === "pink"
-      ? "px-4 py-2 rounded-lg font-mono text-sm tracking-wider text-pink-200 bg-pink-900/40 border border-pink-500/30 whitespace-nowrap shadow-inner"
-      : "px-4 py-2 rounded-lg font-mono text-sm tracking-wider text-purple-200 bg-purple-900/40 border border-purple-500/30 whitespace-nowrap shadow-inner";
-
-  return (
-    <div className="relative w-[96vw] mt-5 rounded-2xl flex items-center">
-      <div className="relative md:w-[48vw] w-full h-full rounded-2xl block bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl p-8 gap-8">
-        <h2 className="font-bold text-[1.2rem] text-gray-100/90 mb-4">
-          Technology:
-        </h2>
-        <ul className="flex flex-wrap gap-5">
-          {items.map((item) => (
-            <li className="flex items-center text-gray-200" key={item}>
-              <span className={`${pillClass}`}>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-// --- Wrapped with motion.div for scroll-driven y ---
 
 const AnimatedServiceCard = ({ isDesktop, y, ...props }) => {
   const serviceCardRef = useRef(null);
@@ -343,7 +346,6 @@ const AnimatedServiceCard = ({ isDesktop, y, ...props }) => {
     target: serviceCardRef,
     offset: ["start end", "end end"],
   });
-  // [element, container]
   const serviceCardRef_y = useTransform(scrollYProgress, [0, 1], ["40%", "0%"]);
   const getY = (transformValue) => (isDesktop ? transformValue : 0);
 
@@ -368,7 +370,6 @@ const AnimatedTechMarquee = ({ isDesktop, y, ...props }) => {
     target: techMarqueeRef,
     offset: ["start end", "end end"],
   });
-  // [element, container]
   const serviceCardRef_y = useTransform(
     scrollYProgress,
     [0.3, 1],
@@ -386,7 +387,7 @@ const AnimatedTechMarquee = ({ isDesktop, y, ...props }) => {
       style={{ y: getY(serviceCardRef_y) }}
       className="w-full flex justify-center"
     >
-      {isDesktop ? <TechMarquee {...props} /> : <SMTechMarquee {...props} />}
+      <TechMarquee {...props} />
     </motion.div>
   );
 };

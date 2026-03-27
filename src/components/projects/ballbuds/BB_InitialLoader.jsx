@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import useMusicControlStore from "@/store/useMusicControlStore";
@@ -86,32 +87,57 @@ const BB_InitialLoader = ({ children }) => {
                     </motion.span>
                   </motion.div>
                 ) : (
-                  <motion.button
-                    key="play-button"
-                    whileHover={{
-                      scale: 1.02,
-                      backgroundColor: "#fff",
-                      color: "#000",
-                      boxShadow: "0 0 40px rgba(255,255,255,0.3)",
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => {
-                      setIsReady(true);
-                      setTimeout(() => {
-                        startExperience();
-                      }, 100);
-                    }}
-                    className="w-full py-4 md:py-5 border border-white/30 text-white rounded-full font-bold uppercase tracking-[0.4em] transition-all duration-500 flex items-center justify-center text-xs md:text-sm"
+                  <motion.div
+                    key="cta"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="fixed flex flex-col justify-center items-center tracking-[1rem]"
                   >
-                    P L A Y
-                  </motion.button>
+                    <motion.div
+                      className="text-[clamp(32px,8vw,9rem)] text-center flex justify-center" // Ensure logo is centered
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                      <Image
+                        style={{
+                          filter:
+                            "drop-shadow(0px 0px 1.5rem rgba(221, 221, 221, 0.7))",
+                        }}
+                        priority
+                        className="w-[60vw] md:w-[30vw] block mx-auto"
+                        src={"/assets/projects/ballbuds/LogoTyped.webp"}
+                        height={600}
+                        width={600}
+                        alt="BallBuds Logo"
+                      />
+                    </motion.div>
+                    <motion.button
+                      key="play-button"
+                      whileHover={{
+                        scale: 1.02,
+                        backgroundColor: "#fff",
+                        color: "#000",
+                        boxShadow: "0 0 40px rgba(255,255,255,0.3)",
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        setIsReady(true);
+                        setTimeout(() => {
+                          startExperience();
+                        }, 100);
+                      }}
+                      className="fixed bottom-[20vh] py-4 pl-12 pr-12 border border-white/30 text-white rounded-full font-bold uppercase tracking-[0.4em] transition-all duration-500 flex items-center justify-center text-xs md:text-sm"
+                    >
+                      P L A Y
+                    </motion.button>
+
+                    <div className="fixed bottom-8 md:bottom-12 text-[8px] md:text-[10px] text-white tracking-[0.5em] uppercase text-center px-4">
+                      © 2025 Studio Unreal Viz
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
-            </div>
-
-            {/* Footer */}
-            <div className="absolute bottom-8 md:bottom-12 text-[8px] md:text-[10px] text-white tracking-[0.5em] uppercase text-center px-4">
-              © 2025 Studio Unreal Viz
             </div>
           </motion.div>
         )}

@@ -57,6 +57,58 @@ body::selection{
   font-family: "Nunito";
 }
 
+/* Section 4 - Homepage */
+@property  --cg-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-Card::before {
+  content: "";
+  position: absolute;
+  width: 95%;
+  height: 97%;
+  background-color: #FFF;
+  border-radius: 0.5rem;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+.animated-Card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: conic-gradient(
+  from var(--cg-angle),
+  #7d5a00,
+  #c8960c,
+  #ffd700,
+  #fff5cc,
+  #ffd700,
+  #c8960c,
+  #7d5a00
+  );
+  border-radius: 0.5rem;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -2;
+  animation: 4s gradient-spin linear infinite;
+}
+
+@keyframes gradient-spin {
+  from {
+    --cg-angle: 0deg;
+  }
+  to {
+    --cg-angle: 360deg;
+  }
+}
+
 /* ballbuds */
 #ballbuds_page {
   font-family: "Audiowide";

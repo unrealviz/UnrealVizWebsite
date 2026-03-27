@@ -85,7 +85,7 @@ const GetInTouch = () => {
 
       <div className="flex flex-col gap-4">
         <a
-          href="mailto:unreal.viz24@gmail.com"
+          href="mailto:official@unrealviz.studio"
           className="flex items-center gap-3 text-gray-300 hover:text-gray-400 transition-colors duration-300 group"
         >
           <FontAwesomeIcon
@@ -93,7 +93,7 @@ const GetInTouch = () => {
             className="text-gray-400/50 group-hover:text-gray-400 text-[clamp(0.875rem,1.2vw,1.25rem)]"
           />
           <p className="text-[clamp(0.875rem,1vw,1.125rem)]">
-            unreal.viz24@gmail.com
+            official@unrealviz.studio
           </p>
         </a>
 

@@ -1,7 +1,6 @@
-"use client";
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 
-const BB_HomepageVideo = ({ videoUrl, videoType, isDesktop }) => {
+const BB_HomepageVideo = ({ videoUrl, videoType }) => {
   return (
     <>
       {videoUrl && (

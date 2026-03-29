@@ -1,19 +1,26 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
-import React, { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import { SpawnBubbles } from "@/components/Bubble";
+import useDisplayStore from "@/store/useDisplayStore";
 
-export default function Section2({ isDesktop }) {
+export default function Section2() {
   const servicesSection = useRef(null);
   const { scrollYProgress } = useScroll({
     target: servicesSection,
     offset: ["start end", "center start"],
   });
+
+  // setup isDesktop from zustand
+  const isDesktop = useDisplayStore((state) => state.isDesktop);
+  useEffect(() => {
+    useDisplayStore.getState().initialize();
+  }, []);
 
   return (
     <motion.section

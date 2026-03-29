@@ -1,18 +1,23 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useRef, useEffect, useCallback } from "react";
-
 import { TiInfoLarge } from "react-icons/ti";
+import useDisplayStore from "@/store/useDisplayStore";
 
-const Section3 = ({ isDesktop }) => {
+const Section3 = () => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
+  // setup isDesktop from zustand
+  const isDesktop = useDisplayStore((state) => state.isDesktop);
+  useEffect(() => {
+    useDisplayStore.getState().initialize();
+  }, []);
 
   const horizontalX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
@@ -41,14 +46,12 @@ const Section3 = ({ isDesktop }) => {
             className="flex flex-row gap-5 p-[25vw] pl-[35vw] items-center h-full w-[125vw]"
           >
             <BallbudsSlide isDesktop={isDesktop} />
-            {/* <BallbudsSlide isDesktop={isDesktop} /> */}
           </motion.div>
         </motion.div>
       ) : (
         /* Mobile Normal Layout */
         <div className="flex flex-row flex-wrap gap-5 justify-center items-center w-full">
           <BallbudsSlide isDesktop={isDesktop} />
-          {/* <BallbudsSlide isDesktop={isDesktop} /> */}
         </div>
       )}
     </motion.section>

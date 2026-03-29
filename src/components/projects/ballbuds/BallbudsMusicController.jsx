@@ -1,19 +1,15 @@
-import React from "react";
+"use client";
 import { GoMute, GoUnmute } from "react-icons/go";
 
 import useMusicControlStore from "@/store/useMusicControlStore";
 
-const BallbudsMusicController = ({ isDesktop }) => {
+const BallbudsMusicController = () => {
   const { isMuted, toggleMuteUnmute } = useMusicControlStore();
 
   return (
     <>
       <button onClick={toggleMuteUnmute}>
-        {isMuted ? (
-          <GoMute size={isDesktop ? "3rem" : "2rem"} />
-        ) : (
-          <GoUnmute size={isDesktop ? "3rem" : "2rem"} />
-        )}
+        {isMuted ? <GoMute size={"2rem"} /> : <GoUnmute size={"2rem"} />}
       </button>
     </>
   );

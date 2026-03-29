@@ -1,25 +1,24 @@
+import * as motion from "motion/react-client";
+
+// client components
+import DesktopOnly from "@/components/DesktopOnly";
 import HomepageVideo from "@/components/HomepageVideo";
-import { motion, useScroll, useTransform } from "motion/react";
+import FoldableController from "@/components/FoldableController";
 import {
   MouseScrollLottie,
   ArrowKeyLottie,
 } from "../components/ScrollHintLottie";
-import FoldableController from "@/components/FoldableController";
 
-const Section1 = ({ isDesktop }) => {
+const Section1 = () => {
   return (
     <section id="home" className="relative h-dvh  overflow-x-hidden">
       {/* VIDEO BACKGROUND LAYER */}
       <div className="absolute top-0 h-dvh w-full overflow-hidden z-20">
-        <HomepageVideo
-          videoUrl={"/assets/Yoga.mp4"}
-          videoType={"video/mp4"}
-          isDesktop={isDesktop}
-        />
+        <HomepageVideo videoUrl={"/assets/Yoga.mp4"} videoType={"video/mp4"} />
       </div>
 
       {/* Video Controller */}
-      <FoldableController isDesktop={isDesktop} />
+      <FoldableController />
       {/* Title and Description */}
       <div className="relative h-dvh w-full">
         <div className="relative h-full w-full"></div>
@@ -48,7 +47,7 @@ const Section1 = ({ isDesktop }) => {
       </div>
 
       {/* scroll hint */}
-      {isDesktop && (
+      <DesktopOnly>
         <div className="absolute bottom-[10vh] left-1/2 -translate-x-1/2 flex flex-row items-center gap-10 z-999">
           {/* Mouse Scroll Lottie */}
           <div className="w-8 md:w-12">
@@ -73,7 +72,7 @@ const Section1 = ({ isDesktop }) => {
             </div>
           </div>
         </div>
-      )}
+      </DesktopOnly>
     </section>
   );
 };

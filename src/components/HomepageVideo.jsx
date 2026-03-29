@@ -1,9 +1,9 @@
 "use client";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import useVideoControlStore from "@/store/useVideoControlStore";
 
-const HomepageVideo = ({ videoUrl, videoType, isDesktop }) => {
+const HomepageVideo = ({ videoUrl, videoType }) => {
   const videoRef = useRef(null);
   const { isPaused, isMuted, experienceStarted, setIsMuted, setVideoState } =
     useVideoControlStore();
@@ -11,7 +11,7 @@ const HomepageVideo = ({ videoUrl, videoType, isDesktop }) => {
   // initial  mount
   useEffect(() => {
     setVideoState(false, false);
-  }, [setVideoState, isDesktop]);
+  }, [setVideoState]);
 
   useEffect(() => {
     const video = videoRef.current;

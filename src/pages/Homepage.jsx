@@ -1,37 +1,16 @@
-"use client";
-import { useEffect } from "react";
-
-import useDisplayStore from "@/store/useDisplayStore";
-
-import Lenis from "lenis";
-
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Section1 from "@/pages/Section1";
-import Section2 from "@/pages/Section2";
-import Section3 from "@/pages/Section3";
 import Section4 from "@/pages/Section4";
 import Section5 from "@/pages/Section5";
-import Footer from "@/components/Footer";
-import LenisKeyboardScroll from "@/components/LenisKeyboardScroll";
+
+// client components
+import Navbar from "@/components/Navbar";
+import Section2 from "@/pages/Section2";
+import Section3 from "@/pages/Section3";
+import LenisAndKeyboardScroll from "@/components/LenisAndKeyboardScroll";
+import DesktopOnly from "@/components/DesktopOnly";
+
 const Homepage = () => {
-  // setup isDesktop from zustand
-  const isDesktop = useDisplayStore((state) => state.isDesktop);
-  useEffect(() => {
-    useDisplayStore.getState().initialize();
-  }, []);
-
-  // Smooth Scroll useEffect (Lenis)
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    return () => lenis.destroy();
-  });
-
   const navLinks = [
     { name: "Home", id: "home" },
     { name: "Services", id: "services" },
@@ -49,23 +28,25 @@ const Homepage = () => {
   return (
     <>
       {/* Enable keybaord scroll */}
-      {isDesktop && <LenisKeyboardScroll />}
+      <DesktopOnly>
+        <LenisAndKeyboardScroll />
+      </DesktopOnly>
 
       <main>
-        <Navbar isDesktop={isDesktop} navLinks={navLinks} />
+        <Navbar navLinks={navLinks} />
 
-        <Section1 isDesktop={isDesktop} />
+        <Section1 />
 
-        <Section2 isDesktop={isDesktop} />
+        <Section2 />
 
-        <Section3 isDesktop={isDesktop} />
+        <Section3 />
 
         <Section4 />
 
-        {/* Sponsors */}
+        {/* Sponsors and FAQ Section */}
         {/* <Section5 /> */}
 
-        <Footer isDesktop={isDesktop} navLinks={foooterLinks} />
+        <Footer navLinks={foooterLinks} />
       </main>
     </>
   );

@@ -1,8 +1,16 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import Image from "next/image";
+"use client";
 
-const Section2 = ({ isDesktop }) => {
+import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import useDisplayStore from "@/store/useDisplayStore";
+
+const Section2 = () => {
+  // setup isDesktop from zustand
+  const isDesktop = useDisplayStore((state) => state.isDesktop);
+  useEffect(() => {
+    useDisplayStore.getState().initialize();
+  }, []);
+
   const GameplayFeaturesSectionRef = useRef(null);
   return (
     <section

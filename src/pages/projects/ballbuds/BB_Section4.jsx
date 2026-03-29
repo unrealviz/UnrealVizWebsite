@@ -1,7 +1,8 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useLenis } from "lenis/react";
 import ThreeScene from "@/components/projects/ballbuds/ThreeScene";
+import useDisplayStore from "@/store/useDisplayStore";
 // import GUI from "lil-gui";
 
 // lights
@@ -168,38 +169,49 @@ const EDM_Glove_KEYFRAMES = (isDesktop) => {
     return [
       {
         at: 0,
-        position: { x: 4.6, y: 0.5, z: 0 - 0.25 },
-        rotation: { x: 0, y: 0, z: 0 },
+        position: {
+          x: 0.35,
+          y: 1.2 + 0.5,
+          z: 4.52 - 0.25,
+        },
+        rotation: { x: 0, y: Math.PI * 5, z: 3.6 },
       },
-      {
-        at: 0.1,
-        position: { x: 1, y: 0.5, z: 0 - 0.25 },
-        rotation: { x: 0.1, y: Math.PI * 2, z: -0.15 },
-      },
-      {
-        at: 0.25,
-        position: { x: 1.6, y: 0.5, z: 0.3 - 0.25 },
-        rotation: { x: -0.12, y: Math.PI * 2.8, z: 0.2 },
-      },
+      // {
+      //   at: 0.1,
+      //   position: {
+      //     x: 1,
+      //     y: 0 + 0.5,
+      //     z: 0.2 - 0.25,
+      //   },
+      //   rotation: { x: 0.1, y: Math.PI * 2, z: -0.15 },
+      // },
       {
         at: 0.5,
-        position: { x: 1.4, y: 0.5, z: 0.2 - 0.25 },
-        rotation: { x: -0.1, y: Math.PI * 4.4, z: 0.18 },
-      },
-      {
-        at: 0.75,
-        position: { x: 1, y: 0.5, z: -0.15 - 0.25 },
-        rotation: { x: 0.12, y: Math.PI * 5.2, z: -0.2 },
+        position: {
+          x: 0.6,
+          y: 0 + 0.5,
+          z: 1.5 - 0.25,
+        },
+        rotation: { x: -0.12, y: Math.PI * 2.9, z: -1 },
       },
       {
         at: 0.9,
-        position: { x: 1.4, y: 0.5, z: 0 - 0.25 },
-        rotation: { x: 0, y: Math.PI * 6, z: 0 },
+        position: {
+          x: 1,
+          y: 0 + 0.5,
+          z: 0.2 - 0.25,
+        },
+        rotation: { x: 0.1, y: Math.PI * 1.9, z: 0.2 },
       },
+
       {
         at: 1,
-        position: { x: -5, y: 0.5, z: 0 - 0.25 },
-        rotation: { x: 0, y: Math.PI * 10, z: 0 },
+        position: {
+          x: -5,
+          y: 0 + 0.5,
+          z: 0.2 - 0.25,
+        },
+        rotation: { x: 0.1, y: Math.PI * -4, z: -0.15 },
       },
     ];
   } else {
@@ -243,7 +255,13 @@ const EDM_Glove_KEYFRAMES = (isDesktop) => {
   }
 };
 
-const BB_Section4 = ({ isDesktop }) => {
+const BB_Section4 = () => {
+  // setup isDesktop from zustand
+  const isDesktop = useDisplayStore((state) => state.isDesktop);
+  useEffect(() => {
+    useDisplayStore.getState().initialize();
+  }, []);
+
   const sceneRef1 = useRef(null);
   const sceneRef2 = useRef(null);
   const subSection1Ref = useRef(null);

@@ -1,5 +1,4 @@
-"use client";
-import { motion, useScroll, useTransform } from "motion/react";
+import * as motion from "motion/react-client";
 import {
   Carousel,
   CarouselContent,

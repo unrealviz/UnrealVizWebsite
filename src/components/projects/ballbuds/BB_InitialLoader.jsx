@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import useMusicControlStore from "@/store/useMusicControlStore";
 
@@ -94,7 +94,7 @@ const BB_InitialLoader = ({ children }) => {
                     className="fixed flex flex-col justify-center items-center tracking-[1rem]"
                   >
                     <motion.div
-                      className="text-[clamp(32px,8vw,9rem)] text-center flex justify-center" // Ensure logo is centered
+                      className="text-[clamp(32px,8vw,9rem)] text-center flex justify-center"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -102,7 +102,7 @@ const BB_InitialLoader = ({ children }) => {
                       <Image
                         style={{
                           filter:
-                            "drop-shadow(0px 0px 1.5rem rgba(221, 221, 221, 0.7))",
+                            "drop-shadow(0px 0px 0.8rem rgba(221, 221, 221, 0.7))",
                         }}
                         priority
                         className="w-[60vw] md:w-[30vw] block mx-auto"

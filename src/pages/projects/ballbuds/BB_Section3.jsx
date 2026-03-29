@@ -1,14 +1,8 @@
-import { useRef } from "react";
-import { motion } from "motion/react";
-import { ConfettiFireworks } from "@/components/ConfettiFireworks";
+import * as motion from "motion/react-client";
 
 const BB_Section3 = () => {
-  const sectionRef = useRef(null);
-  const confettiHadRun = useRef(false);
-
   return (
     <section
-      ref={sectionRef}
       id="gamemodes"
       className="bb_section_3 relative flex flex-col items-center text-gray-700 overflow-hidden"
     >
@@ -20,15 +14,7 @@ const BB_Section3 = () => {
           <h3 className="text-[clamp(1.25rem,1.5vw,2.5rem)] font-bold leading-tight text-pink-500">
             KID MODE
           </h3>
-          <motion.p
-            // onViewportEnter={() => {
-            //   if (!confettiHadRun.current) {
-            //     ConfettiFireworks();
-            //     confettiHadRun.current = true;
-            //   }
-            // }}
-            className="text-[clamp(0.9rem,1.1vw,1.5rem)] leading-relaxed"
-          >
+          <motion.p className="text-[clamp(0.9rem,1.1vw,1.5rem)] leading-relaxed">
             Are you too much of a candyass for gore and cussing? That’s ok, you
             can turn on KID MODE!! By enabling this mode, all gore will be
             turned into confetti, all blood spray will be turned into rainbow

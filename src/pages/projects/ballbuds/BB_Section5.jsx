@@ -1,8 +1,15 @@
+"use client";
 import { motion, useScroll, useTransform } from "motion/react";
-import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import useDisplayStore from "@/store/useDisplayStore";
 
-const BB_Section5 = ({ isDesktop }) => {
+const BB_Section5 = () => {
+  // setup isDesktop from zustand
+  const isDesktop = useDisplayStore((state) => state.isDesktop);
+  useEffect(() => {
+    useDisplayStore.getState().initialize();
+  }, []);
+
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -93,8 +100,8 @@ const BB_Section5 = ({ isDesktop }) => {
         </motion.div>
       ) : (
         /* Mobile Normal Layout */
-        <div className="flex flex-row flex-wrap gap-5 justify-center items-center w-full mt-10">
-          <motion.div className="flex flex-col gap-2 p-2 items-center h-full w-[160vw]">
+        <div className="relative flex flex-row gap-5 justify-center items-center w-full mt-10">
+          <motion.div className="relative flex flex-col gap-2 p-2 items-center h-full w-[160vw]">
             <Roadmap
               qDate={"Q4 2025 - Q2 2026"}
               Title={"Pre Alpha Systems:"}
@@ -175,7 +182,7 @@ const SectionTitle = () => {
 
 const Roadmap = ({ qDate, Title, featureList, videoSource }) => {
   return (
-    <div className="relative flex flex-col justify-between h-[60vh] md:bg-gray-300 p-6 shadow-sm">
+    <div className="sticky top-[10vh] md:relative md:top-0 flex flex-col justify-between bg-white h-[60vh] p-6 shadow-xl">
       <div>
         <h3 className="font-semibold text-[clamp(1rem,0.6vw,2rem)] text-gray-500">
           {qDate}

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-export default function LenisKeyboardScroll() {
+export default function LenisAndKeyboardScroll() {
   useEffect(() => {
     const lenis = new Lenis();
 

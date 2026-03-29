@@ -1,3 +1,5 @@
+"use client";
+
 import Lottie from "lottie-react";
 import MouseScrollGif from "@/assets/LottieGifs/mouse-scroll.json";
 import TwoArrowGif from "@/assets/LottieGifs/2Arrow.json";

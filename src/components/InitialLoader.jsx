@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import useVideoControlStore from "@/store/useVideoControlStore";
 
@@ -92,10 +92,9 @@ const InitialLoader = ({ children }) => {
                     className="fixed flex flex-col justify-center items-center tracking-[1rem]"
                   >
                     <motion.div
-                      className="text-[clamp(32px,8vw,9rem)] text-center"
+                      className="text-[clamp(32px,8vw,9rem)] text-center text-[#edd9ffcf]"
                       style={{
-                        color: "#edd9ffcf",
-                        textShadow: "0px 0px 3rem #8400ff",
+                        textShadow: "var(--text-glow)",
                       }}
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}

@@ -1,5 +1,3 @@
-"use client";
-
 import InitialLoader from "@/components/InitialLoader";
 import Homepage from "@/pages/Homepage";
 

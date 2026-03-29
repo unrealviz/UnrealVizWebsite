@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { IoChevronBackOutline } from "react-icons/io5"; // Arrow icon
 import HomepageVideoController from "@/components/HomepageVideoController";
 
-export default function FoldableController({ isDesktop }) {
+export default function FoldableController() {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -33,7 +33,7 @@ export default function FoldableController({ isDesktop }) {
         className="overflow-hidden h-full flex bg-black/40 backdrop-blur-sm"
       >
         <div className="p-[clamp(0.8rem,1vw,1.2rem)] flex flex-row justify-center gap-4 text-white">
-          <HomepageVideoController isDesktop={isDesktop} />
+          <HomepageVideoController />
         </div>
       </motion.div>
     </div>

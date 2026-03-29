@@ -1,11 +1,11 @@
-"use client";
 import Image from "next/image";
-import React from "react";
 import BB_HomepageVideo from "@/components/projects/ballbuds/BB_HomepageVideo";
 import NonFoldableController from "@/components/NonFoldableController";
+
+// client components
 import BallbudsMusic from "@/components/projects/ballbuds/BallbudsMusic";
 
-const Section1 = ({ isDesktop }) => {
+const Section1 = () => {
   return (
     <div className="bb_section_1 relative h-[400vh] w-full">
       <div className="absolute inset-0 bg-black/50 z-1 pointer-events-none" />
@@ -18,7 +18,7 @@ const Section1 = ({ isDesktop }) => {
       </div>
       {/* Music Controller */}
       <div className="fixed bottom-6 right-6 z-50">
-        <NonFoldableController isDesktop={isDesktop} />
+        <NonFoldableController />
       </div>
 
       {/* 2. SCROLLING CONTENT LAYER */}

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { SpawnBubbles } from "@/components/Bubble";
 import useDisplayStore from "@/store/useDisplayStore";
+import InterectiveLetters from "@/components/InterectiveLetters";
 
 export default function Section2() {
   const servicesSection = useRef(null);
@@ -28,7 +29,8 @@ export default function Section2() {
       id="services"
       className={` h-max md:pb-[10vh] flex flex-col items-center relative overflow-hidden`}
     >
-      {isDesktop && <SpawnBubbles scrollYProgress={scrollYProgress} />}
+      {/* {isDesktop && <SpawnBubbles scrollYProgress={scrollYProgress} />} */}
+      {isDesktop && <InterectiveLetters />}
 
       {/* Section Heading */}
       <SectionTitle isDesktop={isDesktop} />
@@ -230,6 +232,7 @@ const SectionTitle = ({ isDesktop }) => {
         y: getY(sectionTitle_y),
         background:
           "linear-gradient(205deg, #21003169, #2e004536, #0000005e, #0000005e)",
+        textShadow: "0 0 20px rgba(255, 255, 255, .4)",
       }}
       className={`relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-2xl flex justify-center items-center overflow-hidden shadow-lg mt-8`}
     >

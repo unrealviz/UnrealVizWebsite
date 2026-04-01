@@ -1,7 +1,13 @@
 "use client";
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+  frame,
+  useSpring,
+  motion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import Image from "next/image";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import { RefObject, useState, useRef, useEffect, useCallback } from "react";
 import { TiInfoLarge } from "react-icons/ti";
 import useDisplayStore from "@/store/useDisplayStore";
 
@@ -19,14 +25,15 @@ const Section3 = () => {
     useDisplayStore.getState().initialize();
   }, []);
 
-  const horizontalX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  // change this when new contents are added
+  const horizontalX = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
   return (
     <motion.section
       ref={containerRef}
       id="projects"
       className={`${
-        isDesktop ? "h-[200vh]" : "py-20 flex flex-col justify-center"
+        isDesktop ? "h-[300vh]" : "py-20 flex flex-col justify-center"
       } first:flex first:flex-col first:items-center`}
     >
       {/* Section Title */}
@@ -45,7 +52,13 @@ const Section3 = () => {
             style={{ x: horizontalX }}
             className="flex flex-row gap-5 p-[25vw] pl-[35vw] items-center h-full w-[125vw]"
           >
-            <BallbudsSlide isDesktop={isDesktop} />
+            {/* Contents */}
+            <div className="h-[70vh]">
+              <BallbudsSlide isDesktop={isDesktop} />
+            </div>
+            <div className="h-[70vh]">
+              <Project2 />
+            </div>
           </motion.div>
         </motion.div>
       ) : (
@@ -66,6 +79,7 @@ const SectionTitle = ({ isDesktop }) => {
       style={{
         background:
           "linear-gradient(205deg, #21003169, #2e004536, #0000005e, #0000005e)",
+        textShadow: "0 0 20px rgba(255, 255, 255, .4)",
       }}
       className={`relative w-full ${isDesktop ? "h-[45vh]" : "h-auto py-12"} flex justify-center items-center overflow-hidden shadow-lg`}
     >
@@ -106,7 +120,7 @@ const BallbudsSlide = ({ isDesktop }) => {
 
   return (
     <motion.div
-      className={`relative rounded-2xl overflow-hidden cursor-pointer ${isDesktop ? "w-[60vw]" : "w-[95%]"} shrink-0`}
+      className={`relative rounded-2xl overflow-hidden cursor-pointer ${isDesktop ? "w-[60vw]" : "w-[95%]"} h-full shrink-0`}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={() => window.open("/projects/ballbuds", "_blank")}
@@ -169,7 +183,7 @@ const BallbudsSlide = ({ isDesktop }) => {
       {/* Image */}
       <Image
         loading="lazy"
-        className="h-[70vh] object-cover rounded-2xl  hover-3d"
+        className="h-full object-cover rounded-2xl  hover-3d"
         height={1080}
         width={1920}
         src={"/assets/blauballs_RENDER.webp"}
@@ -178,3 +192,67 @@ const BallbudsSlide = ({ isDesktop }) => {
     </motion.div>
   );
 };
+
+const Project2 = () => {
+  const containerRef = useRef(null);
+  // We pass the container ref to track movement relative to the card
+  const { x, y } = useFollowPointer(containerRef);
+
+  const ballStyle = {
+    width: 100,
+    height: 100,
+    backgroundColor: "#ff0088",
+    borderRadius: "50%",
+    position: "absolute", // CRITICAL: Allows x/y to work as coordinates
+    top: "50%", // Center it initially
+    left: "50%", // Center it initially
+    marginLeft: -50, // Offset for half width
+    marginTop: -50, // Offset for half height
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative h-full bg-gray-900 rounded-2xl overflow-hidden cursor-pointer w-[95%] md:w-[60vw] shrink-0"
+    >
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <span className="text-white/20 text-4xl font-bold uppercase">
+          Project Two
+        </span>
+      </div>
+
+      <motion.div style={{ ...ballStyle, x, y }} />
+    </div>
+  );
+};
+
+function useFollowPointer(ref) {
+  const spring = { damping: 5, stiffness: 50, restDelta: 0.001 };
+  const x = useSpring(0, spring);
+  const y = useSpring(0, spring);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const handlePointerMove = ({ clientX, clientY }) => {
+      // getBoundingClientRect is more reliable than offsetLeft for nested elements
+      const rect = element.getBoundingClientRect();
+
+      // Calculate position relative to the center of the container
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      frame.read(() => {
+        x.set(clientX - centerX);
+        y.set(clientY - centerY);
+      });
+    };
+
+    // Listen on window so it feels smooth, but calculates relative to the element
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [ref, x, y]);
+
+  return { x, y };
+}

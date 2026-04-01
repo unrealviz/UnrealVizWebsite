@@ -13,6 +13,7 @@ const Section4 = () => {
       className="h-screen flex flex-col justify-center items-center w-full py-16"
       style={{
         background: "linear-gradient(355deg, rgb(44, 0, 87), rgb(12, 0, 22))",
+        textShadow: "0 0 20px rgba(255, 255, 255, .4)",
       }}
     >
       {/* Header */}

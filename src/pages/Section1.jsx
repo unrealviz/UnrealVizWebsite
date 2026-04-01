@@ -22,8 +22,11 @@ const Section1 = () => {
       {/* Title and Description */}
       <div className="relative h-dvh w-full">
         <div className="relative h-full w-full"></div>
-        <motion.div className="text-box absolute left-0 bottom-0 md:bottom-[10vh] h-max md:left-10 md:rounded-2xl w-full md:w-[min(30vw,600px)] flex flex-col justify-end md:justify-center pb-[5vh] md:pb-0 items-start text-justify underline-offset-[0.4vh] z-20 backdrop-blur-xs md:backdrop-blur-md">
-          <h1 className="font-bold text-[clamp(4rem,8vw,7.5rem)] text-start p-5 overflow-hidden">
+        <motion.div className="text-box absolute left-0 bottom-0 md:bottom-[10vh] h-max md:left-10 md:rounded-2xl w-full md:w-[min(38vw,600px)] flex flex-col justify-end md:justify-center pb-[5vh] md:pb-0 items-start text-justify underline-offset-[0.4vh] z-20 backdrop-blur-xs md:backdrop-blur-md">
+          <h1
+            style={{ textShadow: "0 0 20px rgba(255, 255, 255, .5)" }}
+            className="font-bold text-[clamp(4rem,8vw,7.5rem)] text-start p-5 overflow-hidden"
+          >
             Unreal Viz<span className="text-pink-600 font-extrabold">.</span>
           </h1>
           <p className="text-[clamp(0.8rem,1.2vw,1.25rem)] w-full p-5 leading-relaxed font-semibold opacity-90">

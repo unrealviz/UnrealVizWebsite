@@ -235,13 +235,13 @@ const SectionTitle = ({ isDesktop }) => {
       className={`relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-2xl flex justify-center items-center overflow-hidden shadow-lg mt-8`}
     >
       {/* Debug */}
-      {isDesktop && (
+      {/* {isDesktop && (
         <div className="absolute w-full h-full m-auto inset-0 opacity-30">
           <ReactiveText />
         </div>
-      )}
+      )} */}
       {/* Debug */}
-      {/* <div className="absolute inset-0 backdrop-blur-lg" /> */}
+      <div className="absolute inset-0 backdrop-blur-lg" />
       <div
         className={`flex flex-col ${isDesktop ? "gap-8" : "gap-2"} items-center text-gray-100/90`}
       >

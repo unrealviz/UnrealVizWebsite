@@ -35,13 +35,92 @@ export default function ReactiveText() {
         "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
         "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
         "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "7 g ! T Y 2 $ B 4 % Z r 1 & H q 5 * U c 3 @ V 9 ^ A m 0 # J W 8 ( F L 6 ) n + P X ? s E - k / d : R",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "7 g ! T Y 2 $ B 4 % Z r 1 & H q 5 * U c 3 @ V 9 ^ A m 0 # J W 8 ( F L 6 ) n + P X ? s E - k / d : R",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "1 A % g T 7 ! m Z 4 $ R 9 & P 2 * s B 6 @ Y L 3 ^ d U 8 # W q 5 ( X v 0 ) H + c K ? j F - e / V : t",
+        "K 7 $ r 4 ! T A 9 % u H 3 & Z q 8 * s L 5 @ d W 2 ^ Y P 1 # c B 0 ( J F 6 ) m V + g Q ? x E - n / t : S",
+        "3 P ! b Z 6 $ L 8 % R Y 2 & k F 7 * v U 4 @ H c 5 ^ W A 1 # d J 9 ( t N 0 ) m V + q X ? g E - s / T : K",
+        "S 9 $ t Q 5 ! W R 1 % n A 7 & k B 3 * Z H 8 @ Y 6 ^ u F 4 # L d 2 ( J g 0 ) V + P m ? X E - c / r : T",
+        "V 0 ! B g 5 $ U 7 % Z r 9 & L 4 * d N 3 @ P H 6 ^ T 8 # A c 2 ( W m 1 ) Y + k Q ? x F - s / E : J",
+        "7 g ! T Y 2 $ B 4 % Z r 1 & H q 5 * U c 3 @ V 9 ^ A m 0 # J W 8 ( F L 6 ) n + P X ? s E - k / d : R",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "7 g ! T Y 2 $ B 4 % Z r 1 & H q 5 * U c 3 @ V 9 ^ A m 0 # J W 8 ( F L 6 ) n + P X ? s E - k / d : R",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "7 g ! T Y 2 $ B 4 % Z r 1 & H q 5 * U c 3 @ V 9 ^ A m 0 # J W 8 ( F L 6 ) n + P X ? s E - k / d : R",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
+        "M 3 ! v Q 9 $ Z r 1 % F H 7 & k B 2 * s T 8 @ W d 6 ^ Y c 0 # A P 4 ( L n 5 ) U + X g ? E - J / t : R",
+        "E 8 $ R Z 2 ! P a 6 % n H 4 & J g 9 * U t 1 @ B W 3 ^ d Y 7 # F q 5 ( K c 0 ) X + V m ? s T - r / L : A",
+        "2 k ! U F 8 $ Z P 4 % A t 1 & V q 7 * R Y 3 @ H m 6 ^ W d 5 # g B 0 ( J L 9 ) n + X c ? T E - s / r : Q",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "G 6 ! T m 9 $ Q 2 % V r 7 & P W 4 * L Z 8 @ B s 5 ^ H A 3 # d Y 1 ( k F 0 ) X + n U ? E - c / J : t",
+        "t 5 $ Y 9 ! F R 4 % Z H 8 & m A 3 * P g 6 @ L Q 7 ^ d V 2 # B W 1 ( n U 0 ) X + c J ? E - s / k : T",
+        "D 0 ! P B 6 $ Z Y 2 % t H 4 & R n 7 * W A 8 @ m U 3 ^ L c 1 # q V 9 ( g F 5 ) X + K J ? E - s / r : T",
+        "Y 1 $ n Z 5 ! T R 3 % B H 7 & U F 2 * q P 8 @ V L 6 ^ A g 4 # d W 9 ( c J 0 ) m + s X ? E - K / r : t",
+        "6 r ! Z T 2 $ A m 9 % H V 7 & B P 4 * s Q 1 @ W Y 5 ^ F d 3 # c U 8 ( L g 0 ) X + n J ? E - k / t : R",
+        "X 3 $ F A 7 ! V g 9 % R Y 1 & B P 4 * U s 6 @ Z H 5 ^ T c 8 # W d 2 ( L m 0 ) Q + J n ? E - k / r : t",
       ];
 
       const text = symbols.join(" ");
       console.log(text);
 
-      const fontSize = 32;
-      const lineHeight = 40;
+      const fontSize = 18;
+      const lineHeight = 20;
       const fontConfig = `bold ${fontSize}px ${nunito.style.fontFamily}`;
       const prepared = prepareWithSegments(text, fontConfig);
 
@@ -49,8 +128,8 @@ export default function ReactiveText() {
         if (!stageRef.current || !textContainerRef.current) return;
 
         const stageRect = stageRef.current.getBoundingClientRect();
-        const mouseRadius = 40;
-        const padding = 20;
+        const mouseRadius = 10;
+        const padding = 10;
 
         textContainerRef.current.textContent = "";
         const fragment = document.createDocumentFragment();

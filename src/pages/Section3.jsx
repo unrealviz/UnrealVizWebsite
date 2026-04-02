@@ -26,7 +26,7 @@ const Section3 = () => {
   }, []);
 
   // change this when new contents are added
-  const horizontalX = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+  const horizontalX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   return (
     <motion.section
@@ -56,9 +56,9 @@ const Section3 = () => {
             <div className="h-[70vh]">
               <BallbudsSlide isDesktop={isDesktop} />
             </div>
-            <div className="h-[70vh]">
+            {/* <div className="h-[70vh]">
               <Project2 />
-            </div>
+            </div> */}
           </motion.div>
         </motion.div>
       ) : (

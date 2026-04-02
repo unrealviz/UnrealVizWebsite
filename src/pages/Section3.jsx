@@ -10,6 +10,7 @@ import Image from "next/image";
 import { RefObject, useState, useRef, useEffect, useCallback } from "react";
 import { TiInfoLarge } from "react-icons/ti";
 import useDisplayStore from "@/store/useDisplayStore";
+import ReactiveText from "../components/ReactiveText";
 
 const Section3 = () => {
   const containerRef = useRef(null);

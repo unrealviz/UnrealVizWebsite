@@ -8,204 +8,202 @@ import {
 } from "@/components/ui/carousel";
 import { SpawnBubbles } from "@/components/Bubble";
 import useDisplayStore from "@/store/useDisplayStore";
-import InterectiveLetters from "@/components/InterectiveLetters";
+import ReactiveText from "@/components/ReactiveText";
 
 export default function Section2() {
-  const servicesSection = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: servicesSection,
-    offset: ["start end", "center start"],
-  });
-
-  // setup isDesktop from zustand
   const isDesktop = useDisplayStore((state) => state.isDesktop);
+
   useEffect(() => {
     useDisplayStore.getState().initialize();
   }, []);
 
   return (
     <motion.section
-      ref={servicesSection}
       id="services"
-      className={` h-max md:pb-[10vh] flex flex-col items-center relative overflow-hidden`}
+      className="h-max md:pb-[10vh] flex flex-col items-center relative overflow-visible z-10"
     >
-      {/* {isDesktop && <SpawnBubbles scrollYProgress={scrollYProgress} />} */}
-      {isDesktop && <InterectiveLetters />}
+      {/* {isDesktop && (
+        <div className="absolute w-full h-full m-auto inset-0 opacity-50">
+          <ReactiveText />
+        </div>
+      )} */}
 
-      {/* Section Heading */}
-      <SectionTitle isDesktop={isDesktop} />
+      {/* The rest of your content needs relative positioning to stay on top */}
+      <div className="relative z-20 flex flex-col items-center w-full">
+        <SectionTitle isDesktop={isDesktop} />
 
-      {/* Game Development */}
-      <AnimatedServiceCard
-        isDesktop={isDesktop}
-        title="Game"
-        titleAccent="Development"
-        accentColor="pink"
-        description="Full-cycle game development using Unreal Engine, from concept to production."
-        includeItems={[
-          "Gameplay systems development (Blueprint & C++)",
-          "Multiplayer systems",
-          "AI behavior and character systems",
-          "Mechanics prototyping",
-          "Performance optimization",
-          "Cross-platform deployment",
-        ]}
-        side="left"
-      />
-      <AnimatedTechMarquee
-        isDesktop={isDesktop}
-        items={[
-          "Unreal Engine 5 (Blueprint & C++)",
-          "C++ (Core systems & performance-critical logic)",
-          "Blueprint Visual Scripting (Rapid development & iteration)",
-          "Multiplayer Networking (UE Framework)",
-          "Behavior Trees & AI Systems (UE AI Tools)",
-          "Git / Version Control Systems",
-          "Perforce (for large-scale production pipelines)",
-        ]}
-        accentColor="pink"
-        side="left"
-      />
+        {/* Game Development */}
+        <AnimatedServiceCard
+          isDesktop={isDesktop}
+          title="Game"
+          titleAccent="Development"
+          accentColor="pink"
+          description="Full-cycle game development using Unreal Engine, from concept to production."
+          includeItems={[
+            "Gameplay systems development (Blueprint & C++)",
+            "Multiplayer systems",
+            "AI behavior and character systems",
+            "Mechanics prototyping",
+            "Performance optimization",
+            "Cross-platform deployment",
+          ]}
+          side="left"
+        />
+        <AnimatedTechMarquee
+          isDesktop={isDesktop}
+          items={[
+            "Unreal Engine 5 (Blueprint & C++)",
+            "C++ (Core systems & performance-critical logic)",
+            "Blueprint Visual Scripting (Rapid development & iteration)",
+            "Multiplayer Networking (UE Framework)",
+            "Behavior Trees & AI Systems (UE AI Tools)",
+            "Git / Version Control Systems",
+            "Perforce (for large-scale production pipelines)",
+          ]}
+          accentColor="pink"
+          side="left"
+        />
 
-      {/* 3D Asset Creation */}
-      <AnimatedServiceCard
-        isDesktop={isDesktop}
-        title="3D Asset"
-        titleAccent="Creation"
-        accentColor="purple"
-        description="Production-ready assets for games, films, and virtual worlds."
-        includeItems={[
-          "Environment assets",
-          "Props and modular kits",
-          "Game-ready optimization",
-          "PBR material creation",
-          "LOD setup for real-time performance",
-        ]}
-        side="right"
-      />
-      <AnimatedTechMarquee
-        isDesktop={isDesktop}
-        items={[
-          "Blender (Modeling & asset creation)",
-          "ZBrush (High-detail sculpting)",
-          "Substance 3D Painter (Texturing & PBR workflows)",
-          "Substance 3D Designer (Procedural materials)",
-          "Marmoset Toolbag (Baking & rendering)",
-          "Unreal Engine 5 (Asset integration & look development)",
-        ]}
-        accentColor="purple"
-        side="right"
-      />
+        {/* 3D Asset Creation */}
+        <AnimatedServiceCard
+          isDesktop={isDesktop}
+          title="3D Asset"
+          titleAccent="Creation"
+          accentColor="purple"
+          description="Production-ready assets for games, films, and virtual worlds."
+          includeItems={[
+            "Environment assets",
+            "Props and modular kits",
+            "Game-ready optimization",
+            "PBR material creation",
+            "LOD setup for real-time performance",
+          ]}
+          side="right"
+        />
+        <AnimatedTechMarquee
+          isDesktop={isDesktop}
+          items={[
+            "Blender (Modeling & asset creation)",
+            "ZBrush (High-detail sculpting)",
+            "Substance 3D Painter (Texturing & PBR workflows)",
+            "Substance 3D Designer (Procedural materials)",
+            "Marmoset Toolbag (Baking & rendering)",
+            "Unreal Engine 5 (Asset integration & look development)",
+          ]}
+          accentColor="purple"
+          side="right"
+        />
 
-      {/* Website Development */}
-      <AnimatedServiceCard
-        isDesktop={isDesktop}
-        title="Website"
-        titleAccent="Development"
-        accentColor="purple"
-        description="Engineering pixel-perfect digital products with cutting-edge stacks."
-        includeItems={[
-          "High-Performance Next.js Architectures",
-          "Responsive, UI/UX Systems",
-          "Interactive 3D WebGL (Three.js) Experiences",
-          "Cloud-Native Deployment & CI/CD",
-        ]}
-        side="left"
-      />
-      <AnimatedTechMarquee
-        isDesktop={isDesktop}
-        items={[
-          "React.js",
-          "Next.js 15",
-          "TypeScript",
-          "Three.js",
-          "TailwindCSS",
-          "Framer Motion",
-          "Express.js",
-          "Node.js",
-          "MongoDB",
-          "Redis",
-          "Docker",
-          "Git/GitHub",
-          "GraphQL",
-        ]}
-        accentColor="purple"
-        side="left"
-      />
+        {/* Website Development */}
+        <AnimatedServiceCard
+          isDesktop={isDesktop}
+          title="Website"
+          titleAccent="Development"
+          accentColor="purple"
+          description="Engineering pixel-perfect digital products with cutting-edge stacks."
+          includeItems={[
+            "High-Performance Next.js Architectures",
+            "Responsive, UI/UX Systems",
+            "Interactive 3D WebGL (Three.js) Experiences",
+            "Cloud-Native Deployment & CI/CD",
+          ]}
+          side="left"
+        />
+        <AnimatedTechMarquee
+          isDesktop={isDesktop}
+          items={[
+            "React.js",
+            "Next.js 15",
+            "TypeScript",
+            "Three.js",
+            "TailwindCSS",
+            "Framer Motion",
+            "Express.js",
+            "Node.js",
+            "MongoDB",
+            "Redis",
+            "Docker",
+            "Git/GitHub",
+            "GraphQL",
+          ]}
+          accentColor="purple"
+          side="left"
+        />
 
-      {/* Unreal Engine Prototyping */}
-      <AnimatedServiceCard
-        isDesktop={isDesktop}
-        title="Unreal Engine"
-        titleAccent="Prototyping"
-        accentColor="pink"
-        description="Rapid prototype development to validate game ideas quickly."
-        includeItems={[
-          "Gameplay prototypes",
-          "Vertical slices for pitching",
-          "Investor demo builds",
-          "Experimental mechanics",
-        ]}
-        side="right"
-      />
-      <AnimatedTechMarquee
-        isDesktop={isDesktop}
-        items={[
-          "Unreal Engine 5",
-          "Blueprint Visual Scripting",
-          "C++ (for scalable systems when needed)",
-          "Niagara (VFX prototyping)",
-          "Control Rig / Animation Tools",
-          "Version Control (Git / Perforce)",
-        ]}
-        accentColor="pink"
-        side="right"
-      />
+        {/* Unreal Engine Prototyping */}
+        <AnimatedServiceCard
+          isDesktop={isDesktop}
+          title="Unreal Engine"
+          titleAccent="Prototyping"
+          accentColor="pink"
+          description="Rapid prototype development to validate game ideas quickly."
+          includeItems={[
+            "Gameplay prototypes",
+            "Vertical slices for pitching",
+            "Investor demo builds",
+            "Experimental mechanics",
+          ]}
+          side="right"
+        />
+        <AnimatedTechMarquee
+          isDesktop={isDesktop}
+          items={[
+            "Unreal Engine 5",
+            "Blueprint Visual Scripting",
+            "C++ (for scalable systems when needed)",
+            "Niagara (VFX prototyping)",
+            "Control Rig / Animation Tools",
+            "Version Control (Git / Perforce)",
+          ]}
+          accentColor="pink"
+          side="right"
+        />
 
-      {/* Cinematic Production */}
-      <AnimatedServiceCard
-        isDesktop={isDesktop}
-        title="Cinematic"
-        titleAccent="Production"
-        accentColor="purple"
-        description="Real-time cinematics using Unreal Engine."
-        includeItems={[
-          "Trailer cinematics",
-          "In-game cutscenes",
-          "Pre-visualization",
-          "Motion capture integration",
-          "Sequencer-based storytelling",
-        ]}
-        side="left"
-      />
-      <AnimatedTechMarquee
-        isDesktop={isDesktop}
-        items={["Unreal Engine 5", "Sequencer", "MotionBuilder", "Nuke"]}
-        accentColor="purple"
-        side="left"
-      />
+        {/* Cinematic Production */}
+        <AnimatedServiceCard
+          isDesktop={isDesktop}
+          title="Cinematic"
+          titleAccent="Production"
+          accentColor="purple"
+          description="Real-time cinematics using Unreal Engine."
+          includeItems={[
+            "Trailer cinematics",
+            "In-game cutscenes",
+            "Pre-visualization",
+            "Motion capture integration",
+            "Sequencer-based storytelling",
+          ]}
+          side="left"
+        />
+        <AnimatedTechMarquee
+          isDesktop={isDesktop}
+          items={["Unreal Engine 5", "Sequencer", "MotionBuilder", "Nuke"]}
+          accentColor="purple"
+          side="left"
+        />
 
-      {/* Technical Consultation */}
-      <AnimatedServiceCard
-        isDesktop={isDesktop}
-        title="Technical"
-        titleAccent="Consultation"
-        accentColor="pink"
-        description="Helping studios solve Unreal Engine problems and optimize their projects."
-        includeItems={[
-          "Gameplay system architecture",
-          "Unreal Engine debugging",
-          "Performance optimization",
-          "Pipeline consultation",
-        ]}
-        side="right"
-      />
-      <AnimatedTechMarquee
-        isDesktop={isDesktop}
-        items={["C++", "Blueprint", "Perforce", "Git", "Profiler"]}
-        accentColor="pink"
-        side="right"
-      />
+        {/* Technical Consultation */}
+        <AnimatedServiceCard
+          isDesktop={isDesktop}
+          title="Technical"
+          titleAccent="Consultation"
+          accentColor="pink"
+          description="Helping studios solve Unreal Engine problems and optimize their projects."
+          includeItems={[
+            "Gameplay system architecture",
+            "Unreal Engine debugging",
+            "Performance optimization",
+            "Pipeline consultation",
+          ]}
+          side="right"
+        />
+        <AnimatedTechMarquee
+          isDesktop={isDesktop}
+          items={["C++", "Blueprint", "Perforce", "Git", "Profiler"]}
+          accentColor="pink"
+          side="right"
+        />
+      </div>
     </motion.section>
   );
 }
@@ -236,7 +234,14 @@ const SectionTitle = ({ isDesktop }) => {
       }}
       className={`relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-2xl flex justify-center items-center overflow-hidden shadow-lg mt-8`}
     >
-      <div className="absolute inset-0 backdrop-blur-lg" />
+      {/* Debug */}
+      {isDesktop && (
+        <div className="absolute w-full h-full m-auto inset-0 opacity-30">
+          <ReactiveText />
+        </div>
+      )}
+      {/* Debug */}
+      {/* <div className="absolute inset-0 backdrop-blur-lg" /> */}
       <div
         className={`flex flex-col ${isDesktop ? "gap-8" : "gap-2"} items-center text-gray-100/90`}
       >

@@ -7,10 +7,9 @@ import {
   useTransform,
 } from "motion/react";
 import Image from "next/image";
-import { RefObject, useState, useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { TiInfoLarge } from "react-icons/ti";
 import useDisplayStore from "@/store/useDisplayStore";
-import ReactiveText from "../components/ReactiveText";
 
 const Section3 = () => {
   const containerRef = useRef(null);
@@ -26,8 +25,8 @@ const Section3 = () => {
     useDisplayStore.getState().initialize();
   }, []);
 
-  // change this when new contents are added
-  const horizontalX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  // section width
+  const horizontalX = useTransform(scrollYProgress, [0, 1], ["20%", "-130%"]);
 
   return (
     <motion.section
@@ -42,30 +41,53 @@ const Section3 = () => {
 
       {isDesktop ? (
         /* Desktop Horizontal Scroll */
-        <motion.div
-          className="h-screen sticky top-0 overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(185deg, rgb(44, 0, 87), rgb(12, 0, 22))",
-          }}
-        >
+        <motion.div className="h-screen sticky top-0 overflow-hidden">
           <motion.div
             style={{ x: horizontalX }}
             className="flex flex-row gap-5 p-[25vw] pl-[35vw] items-center h-full w-[125vw]"
           >
-            {/* Contents */}
-            <div className="h-[70vh]">
+            {/* Project 1 */}
+            <ProjectContainer>
               <BallbudsSlide isDesktop={isDesktop} />
-            </div>
-            {/* <div className="h-[70vh]">
-              <Project2 />
-            </div> */}
+              <ProjectPills
+                accentColor="green"
+                pills={["Archviz", "Unreal Engine"]}
+              />
+            </ProjectContainer>
+
+            {/* Project 2 */}
+            <ProjectContainer>
+              <ProjectSlide contentSrc={"plane_optimized.webm"} />
+              <ProjectPills
+                accentColor="blue"
+                pills={["Archviz", "Unreal Engine", "Archviz", "Unreal Engine"]}
+              />
+            </ProjectContainer>
+
+            {/* Project 3 */}
+            <ProjectContainer>
+              <ProjectSlide contentSrc={"Ominus_optimized.webm"} />
+              <ProjectPills
+                accentColor="pink"
+                pills={["Archviz", "Unreal Engine", "Archviz", "Unreal Engine"]}
+              />
+            </ProjectContainer>
+            {/* Project 4 */}
+            <ProjectContainer>
+              <ProjectSlide contentSrc={"d3_optimized.webm"} />
+              <ProjectPills
+                accentColor="green"
+                pills={["Archviz", "Unreal Engine", "Archviz", "Unreal Engine"]}
+              />
+            </ProjectContainer>
           </motion.div>
         </motion.div>
       ) : (
         /* Mobile Normal Layout */
         <div className="flex flex-row flex-wrap gap-5 justify-center items-center w-full">
-          <BallbudsSlide isDesktop={isDesktop} />
+          <ProjectContainer>
+            <BallbudsSlide isDesktop={isDesktop} />
+          </ProjectContainer>
         </div>
       )}
     </motion.section>
@@ -74,22 +96,35 @@ const Section3 = () => {
 
 export default Section3;
 
+// --- Section Title ---
 const SectionTitle = ({ isDesktop }) => {
+  const sectionTitleRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionTitleRef,
+    offset: ["start end", "end end"],
+  });
+  // [element, container]
+  const sectionTitle_y = useTransform(scrollYProgress, [0, 1], ["40%", "0%"]);
+  const getY = (transformValue) => (isDesktop ? transformValue : 0);
+
   return (
     <motion.div
+      ref={sectionTitleRef}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0 }}
+      viewport={{ once: true }}
       style={{
-        background:
-          "linear-gradient(205deg, #21003169, #2e004536, #0000005e, #0000005e)",
+        y: getY(sectionTitle_y),
         textShadow: "0 0 20px rgba(255, 255, 255, .4)",
       }}
-      className={`relative w-full ${isDesktop ? "h-[45vh]" : "h-auto py-12"} flex justify-center items-center overflow-hidden shadow-lg`}
+      className={`text-obstacle m-auto inset-0 relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-xl flex justify-center items-center overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-lg mt-8`}
     >
-      <div className="absolute inset-0 backdrop-blur-lg" />
       <div
         className={`flex flex-col ${isDesktop ? "gap-8" : "gap-2"} items-center text-gray-100/90`}
       >
-        <h1 className="relative z-10 font-bold text-[clamp(2.5rem,7vw,8rem)] text-center">
-          Our Works
+        <h1 className="relative z-10 font-bold text-[clamp(2.5rem,7vw,8rem)] text-center flex flex-row">
+          <span className="">OUR WORKS</span>
         </h1>
         <p className="text-[clamp(0.7rem,1.2vw,2rem)] font-semibold z-10">
           Where ideas become visual experiences.
@@ -99,65 +134,65 @@ const SectionTitle = ({ isDesktop }) => {
   );
 };
 
-const BallbudsSlide = ({ isDesktop }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [showOverlayIfMobile, setshowOverlayIfMobile] = useState(false);
-
-  const handleSetOverlayIfMobile = useCallback(
-    async (state) => {
-      setshowOverlayIfMobile(state);
-    },
-    [setshowOverlayIfMobile],
+const ProjectContainer = ({ children }) => {
+  return (
+    <div className="h-screen w-[50vw] flex flex-col justify-center shrink-0">
+      {children}
+    </div>
   );
+};
 
-  useEffect(() => {
-    if (!isDesktop) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      handleSetOverlayIfMobile(true);
-    } else {
-      handleSetOverlayIfMobile(false);
-    }
-  }, [isDesktop, handleSetOverlayIfMobile]);
+const ProjectPills = ({ accentColor, pills }) => {
+  const colorMap = {
+    pink: "text-pink-200 bg-pink-900/40 border-pink-500/30",
+    green: "text-green-200 bg-green-900/40 border-green-500/30",
+    purple: "text-purple-200 bg-purple-900/40 border-purple-500/30",
+    blue: "text-blue-200 bg-blue-900/40 border-blue-500/30",
+  };
+  const pillClass = `px-4 py-2 rounded-lg font-mono tracking-wider whitespace-nowrap shadow-inner border ${colorMap[accentColor]}`;
 
   return (
-    <motion.div
-      className={`relative rounded-2xl overflow-hidden cursor-pointer ${isDesktop ? "w-[60vw]" : "w-[95%]"} h-full shrink-0`}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+    <div className="relative h-max w-full pl-0 mt-5 flex flex-row flex-wrap items-center">
+      {pills &&
+        pills.map((pill, i) => (
+          <div key={i} className={`p-2 basis-auto`}>
+            <div className={`${pillClass} h-full`}>
+              <p>{pill}</p>
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+};
+
+const BallbudsSlide = () => {
+  return (
+    <div
+      className={`relative cursor-pointer w-full h-[55vh] border-2 border-white/30 rounded-2xl overflow-hidden`}
       onClick={() => window.open("/projects/ballbuds", "_blank")}
     >
       {/* Overlay */}
-      <motion.div className="absolute inset-0 flex justify-center items-center z-10">
+      <div className="absolute inset-0 flex justify-center items-center z-10">
         {/* Info Button */}
-        <motion.div>
+        <div>
           <button
-            className={`absolute ${isDesktop ? "right-10 top-10" : "right-2 top-2"} p-2 font-semibold backdrop-brightness-35 rounded-sm flex flex-row justify-center items-center cursor-pointer z-20 shadow-2xl`}
+            className={`absolute md:right-2 md:top-2 right-2 top-2 p-2 font-semibold text-sm backdrop-brightness-35 rounded-md flex flex-row justify-center items-center cursor-pointer z-20 shadow-2xl`}
             onClick={() => window.open("/projects/ballbuds", "_blank")}
           >
-            <TiInfoLarge className="w-8 h-8" />
+            <TiInfoLarge className="w-6 h-6" />
             <span>Open Project</span>
           </button>
-        </motion.div>
+        </div>
         {/* Bg color */}
-        <motion.div
+        <div
           className="absolute inset-0 flex justify-center items-center"
           style={{
             background:
               "linear-gradient(180deg, rgb(255 255 255 / 0%), rgb(47 47 47 / 100%))",
           }}
-          animate={{ opacity: isHovered || showOverlayIfMobile ? 1 : 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        ></motion.div>
+        ></div>
         {/* title */}
-        <motion.h1
-          className="text-[clamp(4rem,8vw,8rem)] text-white font-bold absolute"
-          initial={{ y: "100%" }}
-          animate={{
-            y: isHovered || showOverlayIfMobile ? "0%" : "30%",
-            opacity: isHovered || showOverlayIfMobile ? 1 : 0,
-          }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
+        <h1 className="text-[clamp(4rem,8vw,8rem)] bottom-[30%] text-white font-bold absolute">
           <Image
             className="w-[60vw] md:w-[30vw]"
             src={"/assets/projects/ballbuds/LogoTyped.webp"}
@@ -165,95 +200,41 @@ const BallbudsSlide = ({ isDesktop }) => {
             width={600}
             alt="BallBuds Logo"
           />
-        </motion.h1>
+        </h1>
         {/* paragraph */}
-        <motion.p
-          className="text-[clamp(1.25rem,1vw,2rem)] p-5 pb-2 text-white absolute font-semibold text-center"
-          initial={{ bottom: "0%" }}
-          animate={{
-            bottom: isHovered || showOverlayIfMobile ? "10%" : "0%",
-            opacity: isHovered || showOverlayIfMobile ? 1 : 0,
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
+        <p className="text-[clamp(1.25rem,1vw,2rem)] p-5 pb-2 bottom-[10%] text-white absolute font-semibold text-center">
           A monster tamer RPG game with humor, depth, and choice, plus FPS
           action that slaps harder than Will Smith
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
 
       {/* Image */}
       <Image
         loading="lazy"
-        className="h-full object-cover rounded-2xl  hover-3d"
+        className="h-full object-cover rounded-2xl"
         height={1080}
         width={1920}
-        src={"/assets/blauballs_RENDER.webp"}
+        src={"/assets/project_assets/ballbuds.webp"}
         alt="BallBuds"
       />
-    </motion.div>
-  );
-};
-
-const Project2 = () => {
-  const containerRef = useRef(null);
-  // We pass the container ref to track movement relative to the card
-  const { x, y } = useFollowPointer(containerRef);
-
-  const ballStyle = {
-    width: 100,
-    height: 100,
-    backgroundColor: "#ff0088",
-    borderRadius: "50%",
-    position: "absolute", // CRITICAL: Allows x/y to work as coordinates
-    top: "50%", // Center it initially
-    left: "50%", // Center it initially
-    marginLeft: -50, // Offset for half width
-    marginTop: -50, // Offset for half height
-  };
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative h-full bg-gray-900 rounded-2xl overflow-hidden cursor-pointer w-[95%] md:w-[60vw] shrink-0"
-    >
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="text-white/20 text-4xl font-bold uppercase">
-          Project Two
-        </span>
-      </div>
-
-      <motion.div style={{ ...ballStyle, x, y }} />
     </div>
   );
 };
 
-function useFollowPointer(ref) {
-  const spring = { damping: 5, stiffness: 50, restDelta: 0.001 };
-  const x = useSpring(0, spring);
-  const y = useSpring(0, spring);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const handlePointerMove = ({ clientX, clientY }) => {
-      // getBoundingClientRect is more reliable than offsetLeft for nested elements
-      const rect = element.getBoundingClientRect();
-
-      // Calculate position relative to the center of the container
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      frame.read(() => {
-        x.set(clientX - centerX);
-        y.set(clientY - centerY);
-      });
-    };
-
-    // Listen on window so it feels smooth, but calculates relative to the element
-    window.addEventListener("pointermove", handlePointerMove);
-    return () => window.removeEventListener("pointermove", handlePointerMove);
-  }, [ref, x, y]);
-
-  return { x, y };
-}
+const ProjectSlide = ({ contentSrc }) => {
+  return (
+    <div
+      className={`relative cursor-pointer w-full h-[55vh] border-2 border-white/30 rounded-2xl overflow-hidden`}
+    >
+      <video
+        src={`/assets/project_assets/${contentSrc}`}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+        preload="metadata"
+      />
+    </div>
+  );
+};

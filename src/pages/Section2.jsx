@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import { SpawnBubbles } from "@/components/Bubble";
 import useDisplayStore from "@/store/useDisplayStore";
-import ReactiveText from "@/components/ReactiveText";
 
 export default function Section2() {
   const isDesktop = useDisplayStore((state) => state.isDesktop);
@@ -22,14 +21,7 @@ export default function Section2() {
       id="services"
       className="h-max md:pb-[10vh] flex flex-col items-center relative overflow-visible z-10"
     >
-      {isDesktop && (
-        <div className="sticky top-0 left-0 w-full h-screen opacity-30 z-0">
-          <ReactiveText />
-        </div>
-      )}
-
-      {/* The rest of your content needs relative positioning to stay on top */}
-      <div className="relative z-20 flex flex-col gap-8 items-center w-full">
+      <div className="relative z-20 flex flex-col items-center w-full">
         <SectionTitle isDesktop={isDesktop} />
 
         {/* Game Development */}
@@ -210,34 +202,28 @@ export default function Section2() {
 
 // --- Section Title ---
 const SectionTitle = ({ isDesktop }) => {
-  // const sectionTitleRef = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: sectionTitleRef,
-  //   offset: ["start end", "end end"],
-  // });
-  // // [element, container]
-  // const sectionTitle_y = useTransform(scrollYProgress, [0, 1], ["40%", "0%"]);
-  // const getY = (transformValue) => (isDesktop ? transformValue : 0);
+  const sectionTitleRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionTitleRef,
+    offset: ["start end", "end end"],
+  });
+  // [element, container]
+  const sectionTitle_y = useTransform(scrollYProgress, [0, 1], ["40%", "0%"]);
+  const getY = (transformValue) => (isDesktop ? transformValue : 0);
 
   return (
     <motion.div
-      // ref={sectionTitleRef}
-      // initial={{ opacity: 0 }}
-      // whileInView={{ opacity: 1 }}
-      // transition={{ duration: 1, delay: 0 }}
-      // viewport={{ once: true }}
+      ref={sectionTitleRef}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0 }}
+      viewport={{ once: true }}
       style={{
-        // y: getY(sectionTitle_y),
+        y: getY(sectionTitle_y),
         textShadow: "0 0 20px rgba(255, 255, 255, .4)",
       }}
-      className={`text-obstacle relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-xl flex justify-center items-center overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-lg mt-8`}
+      className={`relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-xl flex justify-center items-center overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-lg mt-8`}
     >
-      {/* Debug */}
-      {/* {isDesktop && (
-        <div className="absolute w-full h-full m-auto inset-0 opacity-30">
-          <ReactiveText />
-        </div>
-      )} */}
       <div
         className={`flex flex-col ${isDesktop ? "gap-8" : "gap-2"} items-center text-gray-100/90`}
       >
@@ -270,7 +256,7 @@ const ServiceCard = ({
     <div
       className={`relative w-[96vw] mt-5 flex ${side === "right" ? "justify-end" : "justify-start"} items-center overflow-hidden`}
     >
-      <div className="text-obstacle relative md:w-[48vw] w-full min-h-[22vh] h-full rounded-md flex flex-col items-start overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl p-8">
+      <div className="relative md:w-[48vw] w-full min-h-[22vh] h-full rounded-md flex flex-col items-start overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl p-8">
         <h1 className="font-bold text-[clamp(1.75rem,2vw,3rem)] text-left text-white/90 leading-tight">
           {titleAccent ? (
             <>
@@ -323,10 +309,10 @@ const TechMarquee = ({ items, accentColor, side = "left" }) => {
         side === "right" ? "justify-end" : "justify-start"
       } items-center`}
     >
-      <div className="text-obstacle relative overflow-hidden md:w-[48vw] w-full h-[50%] rounded-md flex flex-row items-center bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl pl-4 pr-4 gap-8">
+      <div className="relative overflow-hidden md:w-[48vw] w-full h-[50%] rounded-md flex flex-row items-center bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-xl pl-4 pr-4 gap-8">
         <div className="absolute inset-y-0 left-0 w-10 bg-linear-to-r from-black/10 to-transparent z-20 pointer-events-none" />
 
-        <h2 className="text-obstacle hidden md:block z-10 font-bold text-[clamp(0.875rem,1.2vw,2.5rem)] text-white/90 whitespace-nowrap">
+        <h2 className="hidden md:block z-10 font-bold text-[clamp(0.875rem,1.2vw,2.5rem)] text-white/90 whitespace-nowrap">
           Technology
         </h2>
 

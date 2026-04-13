@@ -9,13 +9,8 @@ import {
 
 const Section5 = () => {
   return (
-    <section
-      className="min-h-[120vh] w-full py-16"
-      style={{
-        background: "linear-gradient(185deg, rgb(44, 0, 87), rgb(12, 0, 22))",
-      }}
-    >
-      <SponsorsSection />
+    <section className="h-[80vh] flex items-center w-full py-16">
+      {/* <SponsorsSection /> */}
       <FAQSection />
     </section>
   );
@@ -115,7 +110,6 @@ const FAQSection = () => {
       gap-[clamp(2rem,8vw,6rem)]
       justify-center items-center
       overflow-hidden
-      mt-[15vh]
       px-6
     "
     >

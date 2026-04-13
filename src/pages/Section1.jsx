@@ -13,7 +13,7 @@ import HomepageTitle from "@/components/HomepageTitle";
 const Section1 = () => {
   return (
     <section id="home" className="relative h-dvh w-full">
-      <div className="h-[200vh] w-full">
+      <div className="h-screen w-full">
         {/* VIDEO BACKGROUND LAYER */}
         <div className="sticky top-0 h-dvh w-full z-20">
           <HomepageVideo

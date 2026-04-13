@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import { SpawnBubbles } from "@/components/Bubble";
 import useDisplayStore from "@/store/useDisplayStore";
-import ReactiveText from "@/components/ReactiveText";
 
 export default function Section2() {
   const isDesktop = useDisplayStore((state) => state.isDesktop);
@@ -22,13 +21,6 @@ export default function Section2() {
       id="services"
       className="h-max md:pb-[10vh] flex flex-col items-center relative overflow-visible z-10"
     >
-      {/* {isDesktop && (
-        <div className="absolute w-full h-full m-auto inset-0 opacity-50">
-          <ReactiveText />
-        </div>
-      )} */}
-
-      {/* The rest of your content needs relative positioning to stay on top */}
       <div className="relative z-20 flex flex-col items-center w-full">
         <SectionTitle isDesktop={isDesktop} />
 
@@ -228,25 +220,15 @@ const SectionTitle = ({ isDesktop }) => {
       viewport={{ once: true }}
       style={{
         y: getY(sectionTitle_y),
-        background:
-          "linear-gradient(205deg, #21003169, #2e004536, #0000005e, #0000005e)",
         textShadow: "0 0 20px rgba(255, 255, 255, .4)",
       }}
-      className={`relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-2xl flex justify-center items-center overflow-hidden shadow-lg mt-8`}
+      className={`relative w-[96vw] ${isDesktop ? "h-[45vh]" : "h-auto py-12"} rounded-xl flex justify-center items-center overflow-hidden bg-white/10 backdrop-blur-lg border-2 border-white/30 shadow-lg mt-8`}
     >
-      {/* Debug */}
-      {/* {isDesktop && (
-        <div className="absolute w-full h-full m-auto inset-0 opacity-30">
-          <ReactiveText />
-        </div>
-      )} */}
-      {/* Debug */}
-      <div className="absolute inset-0 backdrop-blur-lg" />
       <div
         className={`flex flex-col ${isDesktop ? "gap-8" : "gap-2"} items-center text-gray-100/90`}
       >
-        <h1 className="relative z-10 font-bold text-[clamp(2.5rem,7vw,8rem)] text-center">
-          Our Services
+        <h1 className="relative z-10 font-bold text-[clamp(2.5rem,7vw,8rem)] text-center flex flex-row">
+          <span className="">OUR SERVICES</span>
         </h1>
         <p className="text-[clamp(0.7rem,1.2vw,2rem)] font-semibold z-10">
           Transforming ideas into immersive digital solutions.

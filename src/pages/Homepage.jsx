@@ -44,7 +44,7 @@ const Homepage = () => {
         <Section4 />
 
         {/* Sponsors and FAQ Section */}
-        {/* <Section5 /> */}
+        <Section5 />
 
         <Footer navLinks={foooterLinks} />
       </main>

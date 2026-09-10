@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: "/", destination: "/uv-studio-index.html" },
+      ],
+    };
+  },
 };
 
 export default nextConfig;

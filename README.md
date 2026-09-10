@@ -1,5 +1,11 @@
 # Unreal Viz - Client Portfolio
 
+## Minimal studio homepage
+
+The redesigned homepage is served from `public/uv-studio-index.html` through the `/` rewrite in `next.config.mjs`. It includes the Ballbuds feature, Yomaia lighting variants, portfolio viewer, and studio contact links. Its stylesheet, interaction script, and images live alongside it under the `public/uv-studio-` filename prefix.
+
+The existing Next.js project pages remain available, including `/projects/ballbuds`. Keep the existing Vercel Next.js preset, installation command, and build settings. No domain or Git connection changes are required. Deploy a branch preview before merging into the production branch. Reverting the homepage rewrite restores the original homepage.
+
 A modern, interactive portfolio and project showcase built with **Next.js 16**, **React 19**, and **Three.js**. Features smooth animations, responsive design, and immersive 3D experiences.
 
 ## 🛠️ Tech Stack

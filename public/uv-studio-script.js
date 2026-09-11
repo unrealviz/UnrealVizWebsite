@@ -148,3 +148,63 @@ if (yomaiaLighting) {
     for (const option of yomaiaLighting.querySelectorAll('button')) option.setAttribute('aria-pressed', String(option === button));
   });
 }
+
+// Posed alpha layers retain keyboard, touch and pointer interaction.
+const characterStage = document.querySelector('.posed-stage');
+if (characterStage) {
+ // Background and layers share the same uniformly scaled 1672 × 941 plane.
+ const layoutScene=()=>{
+  const w=hero.clientWidth,h=hero.clientHeight,mobile=w<=700;
+  const scale=mobile?Math.max(w/1000,.46):Math.max(w/1672,h/941);
+  const width=1672*scale,height=941*scale;
+  const left=mobile?w/2-970*scale:(w-width)/2;
+  const top=mobile?h-145-height:(h-height)/2;
+  for(const [key,value] of Object.entries({left,top,width,height}))hero.style.setProperty(`--scene-${key}`,`${value}px`);
+ };
+ new ResizeObserver(layoutScene).observe(hero);
+ layoutScene();
+ const label=characterStage.querySelector('.character-name');
+ let active=null;
+ const clear=()=>{active?.classList.remove('is-active');active=null;label.hidden=true;};
+ const place=(x,y)=>{label.style.left=`${Math.max(8,Math.min(x+16,innerWidth-label.offsetWidth-8))}px`;label.style.top=`${Math.max(8,Math.min(y+18,innerHeight-label.offsetHeight-8))}px`;};
+ for(const character of characterStage.querySelectorAll('[data-character-name]')) {
+  // The foreground creature's transparent rectangle overlaps the player's feet.
+  // Sample its alpha so only visible creature pixels activate pointer feedback.
+  const art=character.querySelector('img');
+  const pixelHover=character.hasAttribute('data-foreground');
+  let alphaPixels=null;
+  const loadAlpha=()=>{
+   if(!pixelHover||!art.naturalWidth)return;
+   const canvas=document.createElement('canvas');canvas.width=art.naturalWidth;canvas.height=art.naturalHeight;
+   const context=canvas.getContext('2d',{willReadFrequently:true});
+   context.drawImage(art,0,0);alphaPixels=context.getImageData(0,0,canvas.width,canvas.height);
+  };
+  if(pixelHover){art.addEventListener('load',loadAlpha);if(art.complete)loadAlpha();}
+  const painted=event=>{
+   if(!pixelHover||!event)return true;
+   if(!alphaPixels)return false;
+   const rect=art.getBoundingClientRect();
+   const x=Math.floor((event.clientX-rect.left)/rect.width*alphaPixels.width);
+   const y=Math.floor((event.clientY-rect.top)/rect.height*alphaPixels.height);
+   return x>=0&&y>=0&&x<alphaPixels.width&&y<alphaPixels.height&&alphaPixels.data[(y*alphaPixels.width+x)*4+3]>100;
+  };
+  const show=event=>{if(!painted(event)){if(active===character)clear();character.style.cursor='default';return;}character.style.cursor='pointer';clear();active=character;character.classList.add('is-active');label.textContent=character.dataset.characterName;label.hidden=false;const rect=character.getBoundingClientRect();place(event?.clientX??rect.left,event?.clientY??rect.bottom);};
+  character.addEventListener('pointerenter',show);
+  character.addEventListener('pointermove',event=>{if(pixelHover)show(event);else place(event.clientX,event.clientY);});
+  character.addEventListener('pointerleave',clear);
+  character.addEventListener('focus',()=>show());
+  character.addEventListener('blur',clear);
+  character.addEventListener('click',event=>show(event.detail?event:undefined));
+  character.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();show();}});
+ }
+ document.addEventListener('keydown',event=>{if(event.key==='Escape')clear();});
+ document.addEventListener('click',event=>{if(!event.target.closest('[data-character-name]'))clear();});
+ window.addEventListener('scroll',clear,{passive:true});
+ atmosphereControls.addEventListener('click',event=>{
+  const button=event.target.closest('[data-lighting]');if(!button)return;
+  clear();const daylight=button.dataset.lighting==='daylight';
+  hero.querySelector('.mystery-scene').src=daylight?'/uv-studio-hero-daylight.png':'/uv-studio-hero-undead.png';
+  for(const group of characterStage.querySelectorAll('[data-faction]'))group.toggleAttribute('hidden',group.dataset.faction!==button.dataset.lighting);
+  for(const creature of characterStage.querySelectorAll('[data-foreground]'))creature.toggleAttribute('hidden',creature.dataset.foreground!==button.dataset.lighting);
+ });
+}
